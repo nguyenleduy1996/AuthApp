@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { FormBuilder, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MaterialModule } from '../../material.module';
 import { Router, RouterLink } from '@angular/router';
-import { userregister } from '../../_model/user.model';
+import { registerconfirm, userregister } from '../../_model/user.model';
 import { UserService } from '../../_service/user.service';
 import { ToastrService } from 'ngx-toastr';
 
@@ -38,15 +38,17 @@ export class RegisterComponent {
       }
       this.service.Userregisteration(_obj).subscribe(item=>{
           this._response = item
-      
-          console.log(this._response)
+          let _confirmobj:registerconfirm = {
+            userid: this._response.message,
+            username: _obj.userName,
+            otptext:''
+          }
+          this.service._registerresp.set(_confirmobj);
           if(this._response.result === "pass"){
-            this.toastr.error('Validate OTP & Complete the register ', 'Registeration')
-            this.router.navigateByUrl('confirmotp') 
-            console.log("ssss")
+            this.toastr.success('Validate OTP & complete the registeration', 'Registeration');
+            this.router.navigateByUrl('/comfirmotp') 
           }else{
-            console.log("ssss")
-            this.toastr.error("Failed due to: " + this._response.message, "registeratio Failed")
+            this.toastr.error('Failed due to : ' + this._response.message, 'Registeration Failed')
           }
       });
     }
