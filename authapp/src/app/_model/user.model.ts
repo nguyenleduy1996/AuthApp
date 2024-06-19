@@ -29,3 +29,10 @@ export interface menu {
     name:string;
 }
 
+export interface resetpassword {
+    username: string;
+    oldpassword:string;
+    newpassword:string;
+}
+
+
