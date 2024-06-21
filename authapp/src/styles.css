@@ -10,6 +10,10 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 
+.mat-toolbar.mat-primary {
+    --mat-toolbar-container-background-color: rgb(10, 104, 255);
+}
+
 mat-card {
     margin: 2%;
     text-align: left;

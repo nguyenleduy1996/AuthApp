@@ -1,5 +1,6 @@
 ﻿using LearnAPI.Repos;
 using LearnAPI.Repos.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Data.SqlClient;
@@ -9,6 +10,7 @@ namespace LearnAPI.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Policy = "PermissionPolicy")]
     public class AssociateController : ControllerBase
     {
         private readonly LearndataContext learndata;

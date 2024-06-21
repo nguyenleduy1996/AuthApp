@@ -36,7 +36,7 @@ export class AppmenuComponent implements OnInit, DoCheck {
   Setaccess(){
     let userrole = localStorage.getItem('userrole');
     let currentUrl = this.router.url;
-    if(currentUrl ==='/register' || currentUrl === '/login' ||currentUrl === '/resetpassword' ){
+    if(currentUrl ==='/register' || currentUrl === '/login' ||currentUrl === '/resetpassword' || currentUrl === '/forgetpassword' ){
       this.showmenu = false
     }else{
       this.showmenu = true;

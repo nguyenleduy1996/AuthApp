@@ -95,7 +95,7 @@ builder.Services.Configure<JwtSettings>(_jwtsetting);
 
 var app = builder.Build();
 
-app.MapGet("/minimalapi", () => "Nihira Techiees");
+/*app.MapGet("/minimalapi", () => "Nihira Techiees");
 
 app.MapGet("/getchannel", (string channelname) => "Welcome to " + channelname).WithOpenApi(opt =>
 {
@@ -135,7 +135,7 @@ app.MapDelete("/removecustomer/{code}", async (LearndataContext db, string code)
     }
     await db.SaveChangesAsync();
 });
-
+*/
 app.UseRateLimiter();
 // Configure the HTTP request pipeline.
 //if (app.Environment.IsDevelopment())

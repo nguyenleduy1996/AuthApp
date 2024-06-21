@@ -1,7 +1,8 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import {  loginresp, menu, registerconfirm, resetpassword, usercred, userregister } from '../_model/user.model';
+import {  loginresp, menu, registerconfirm, resetpassword, updatepassword, usercred, userregister } from '../_model/user.model';
+import { single } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -16,6 +17,7 @@ export class UserService {
     username: '',
     otptext: ''
   })
+  _username = signal('');
   _menulist = signal<menu[]>([]);
 
 
@@ -34,6 +36,14 @@ export class UserService {
   }
   Resetpassword(_data:resetpassword){
     return this.http.post(this.baseUrl + 'User/resetpassword', _data);
+  }
+
+  Forgetpassword(username:string){
+    return this.http.get(this.baseUrl + 'User/forgetpassword?username=' + username);
+  }
+
+  Updatepassword(_data:updatepassword){
+    return this.http.post(this.baseUrl + 'User/updatepassword',  _data);
   }
 
 }

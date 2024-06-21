@@ -35,4 +35,11 @@ export interface resetpassword {
     newpassword:string;
 }
 
+export interface updatepassword {
+    username: string;
+    password:string;
+    otptext:string;
+}
+
+
 
