@@ -9,6 +9,7 @@ import { ResetpasswordComponent } from './component/resetpassword/resetpassword.
 import { UserComponent } from './component/user/user.component';
 import { CustomerComponent } from './component/customer/customer.component';
 import { authGuard } from './_guard/auth.guard';
+import { AddcustomerComponent } from './component/addcustomer/addcustomer.component';
 
 export const routes: Routes = [
 
@@ -21,4 +22,6 @@ export const routes: Routes = [
     {path:'resetpassword', component: ResetpasswordComponent},
     {path:'user', component: UserComponent, canActivate:[authGuard]},
     {path:'customer', component: CustomerComponent, canActivate:[authGuard]},
+    {path:'customer/add', component: AddcustomerComponent, canActivate:[authGuard]},
+    {path:'customer/edit/:code',component:AddcustomerComponent,canActivate:[authGuard]},
 ];

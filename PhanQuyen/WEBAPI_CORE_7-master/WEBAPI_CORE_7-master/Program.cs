@@ -127,7 +127,7 @@ app.MapPut("/updatecustomer/{code}", async (LearndataContext db, TblCustomer cus
     await db.SaveChangesAsync();
 });
 
-app.MapDelete("/removecustomer/{code}", async (LearndataContext db, string code) => {
+app.MapDelete("/removecustomer/{code}", async (Learndat  aContext db, string code) => {
     var existdata = await db.TblCustomers.FindAsync(code);
     if (existdata != null)
     {

@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import {  loginresp, menu, registerconfirm, resetpassword, updatepassword, usercred, userregister } from '../_model/user.model';
+import {  loginresp, menu, menupermission, registerconfirm, resetpassword, updatepassword, usercred, userregister } from '../_model/user.model';
 import { single } from 'rxjs';
 
 @Injectable({
@@ -44,6 +44,9 @@ export class UserService {
 
   Updatepassword(_data:updatepassword){
     return this.http.post(this.baseUrl + 'User/updatepassword',  _data);
+  }
+  Getmenupermission(role:string,menuname:string){
+    return this.http.get<menupermission>(this.baseUrl + 'UserRole/GetMenupermissionbyrole?userrole='+role+'&menucode=' + menuname)
   }
 
 }
