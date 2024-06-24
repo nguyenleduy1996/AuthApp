@@ -41,6 +41,7 @@ export class LoginComponent  implements OnInit {
                 localStorage.setItem('token', this._response.token);
                 localStorage.setItem('username', _obj.username);
                 localStorage.setItem('userrole', this._response.userRole);
+                localStorage.setItem('refreshToken', this._response.refreshToken)
                 this.service.Loadmenubyrole(this._response.userRole).subscribe(item=>{
                   this.service._menulist.set(item)
                 })

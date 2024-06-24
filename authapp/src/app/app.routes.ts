@@ -10,18 +10,21 @@ import { UserComponent } from './component/user/user.component';
 import { CustomerComponent } from './component/customer/customer.component';
 import { authGuard } from './_guard/auth.guard';
 import { AddcustomerComponent } from './component/addcustomer/addcustomer.component';
+import { UserroleComponent } from './component/userrole/userrole.component';
 
 export const routes: Routes = [
 
-    {path:'', component: HomeComponent, canActivate:[authGuard]},
-    {path:'register', component: RegisterComponent},
-    {path:'login', component: LoginComponent},
-    {path:'comfirmotp', component: ConfirmotpComponent},
-    {path:'forgetpassword', component: ForgetpasswordComponent},
-    {path:'updatepassword', component: UpdatepasswordComponent},
-    {path:'resetpassword', component: ResetpasswordComponent},
-    {path:'user', component: UserComponent, canActivate:[authGuard]},
-    {path:'customer', component: CustomerComponent, canActivate:[authGuard]},
-    {path:'customer/add', component: AddcustomerComponent, canActivate:[authGuard]},
+    {path:'',component:HomeComponent,canActivate:[authGuard]},
+    {path:'register',component:RegisterComponent},
+    {path:'login',component:LoginComponent},
+    {path:'confirmotp',component:ConfirmotpComponent},
+    {path:'forgetpassword',component:ForgetpasswordComponent},
+    {path:'updatepassword',component:UpdatepasswordComponent},
+    {path:'resetpassword',component:ResetpasswordComponent},
+    {path:'customer',component:CustomerComponent,canActivate:[authGuard]},
+    {path:'customer/add',component:AddcustomerComponent,canActivate:[authGuard]},
     {path:'customer/edit/:code',component:AddcustomerComponent,canActivate:[authGuard]},
+    {path:'user',component:UserComponent,canActivate:[authGuard]},
+    {path:'userrole',component:UserroleComponent,canActivate:[authGuard]}
+
 ];

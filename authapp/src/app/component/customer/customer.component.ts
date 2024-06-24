@@ -10,6 +10,7 @@ import { ToastrService } from 'ngx-toastr';
 import { MatPaginator } from '@angular/material/paginator';
 import { MatSort } from '@angular/material/sort';
 import { ButtonpermissionComponent } from '../../lib/buttonpermission/buttonpermission.component';
+import { catchError, throwError } from 'rxjs';
 
 
 
@@ -53,9 +54,7 @@ export class CustomerComponent implements OnInit {
 
     let role = localStorage.getItem('userrole') as string;
     this.userservice.Getmenupermission(role, 'customer').subscribe(item => {
-
       this._permission = item;
-      console.log(this._permission);
     })
   }
 
@@ -92,10 +91,6 @@ export class CustomerComponent implements OnInit {
     } else {
       this.toastr.warning('User not having delete access', 'warning')
     }
-  }
-
-  test(){
-    console.log("hihi")
   }
 
 }
