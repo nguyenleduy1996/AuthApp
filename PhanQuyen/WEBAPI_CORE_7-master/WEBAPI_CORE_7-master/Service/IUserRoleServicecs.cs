@@ -11,5 +11,7 @@ namespace LearnAPI.Service
         Task<List<TblMenu>> GetAllMenus();
         Task<List<Appmenu>> GetAllMenubyrole(string userrole);
         Task<Menupermission> GetMenupermissionbyrole(string userrole,string menucode);
+
+        Task<List<MenuByUser>> GetMenuByUser(string userrole);
     }
 }

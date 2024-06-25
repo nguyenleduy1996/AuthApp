@@ -1,7 +1,7 @@
 import { HttpClient, HttpErrorResponse } from '@angular/common/http';
 import { Injectable, signal } from '@angular/core';
 import { environment } from '../../environments/environment.development';
-import {  loginresp, menu, menupermission, menus, registerconfirm, resetpassword, roles, updatepassword, updateuser, usercred, userregister, users } from '../_model/user.model';
+import {  loginresp, menu, menupermission, menus, menuuserpermission, registerconfirm, resetpassword, roles, updatepassword, updateuser, usercred, userregister, users } from '../_model/user.model';
 import { Subject, catchError, throwError } from 'rxjs';
 import { Router } from '@angular/router';
 
@@ -32,6 +32,7 @@ export class UserService {
   _username = signal('');
   _menulist = signal<menu[]>([]);
 
+  _Multimenulist = signal<menuuserpermission[]>([]);
   
 
   getRefreshToken()   {
@@ -133,6 +134,12 @@ export class UserService {
 
   Assignrolepermission(_data:menupermission[]){
     return this.http.post(this.baseUrl + 'UserRole/assignrolepermission', _data);
+  }
+
+  //Customer API
+
+  Getallmenusbyuser(user:string) {
+    return this.http.get<menuuserpermission[]>(this.baseUrl + 'UserRole/GetAllMenusbyUser?userrole=' + user);
   }
 
 

@@ -90,18 +90,37 @@ export interface users {
 }
 
 export interface roles {
-    code: string
-    name: string
-    status: boolean
+    code: string;
+    name: string;
+    status: boolean;
 }
 export interface updateuser {
     username: string;
     role: string;
-    status:boolean
+    status:boolean;
 }
 
 export interface menus {
-    code: string
-    name: string
-    status: boolean
+    code: string;
+    name: string;
+    status: boolean;
 }
+
+export interface menuuserpermission {
+    code: string;
+    listChild:Child[];
+}
+
+
+export interface Child {
+    id: string;
+    username: string;
+    code: string;
+    perrmission: string;
+    type: string;
+    createdTime: string;
+    updatedTime: string | null;
+    status: number;
+}
+
+

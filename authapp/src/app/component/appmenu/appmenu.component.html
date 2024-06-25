@@ -14,19 +14,24 @@
                 <button mat-menu-item routerLink="/login">Logout</button>
             </mat-menu>
         </mat-toolbar>
-        <mat-drawer-container autosize>
+        <mat-drawer-container autosize style="min-height: 900px;">
             <mat-drawer #drawer opened="true" mode="side" position="start">
-    
                 <mat-nav-list>
+                  @for (item of Multimenulist; track $index) {
                     <mat-list-item>
-                        <button mat-button routerLink=""><mat-icon>home</mat-icon>Home</button>
+                      <button mat-button (click)="toggleMenu(item.code)"><mat-icon>home</mat-icon>Home</button>
                     </mat-list-item>
-                    @for(item of menulist;track item){
-                        <mat-list-item>
-                            <button mat-button routerLink="{{item.code}}"><mat-icon>home</mat-icon>{{item.name}}</button>
-                        </mat-list-item>
-                    } 
-                </mat-nav-list>
+                    <div [id]="item.code" style="display: block;">
+                      @if(item.listChild.length > 0){
+                        @for (item2 of item.listChild; track $index) {
+                          <mat-list-item style="padding-left: 50px;">
+                            <button mat-button routerLink="/">{{item2.perrmission}}</button>
+                          </mat-list-item>
+                        }
+                      }
+                    </div>
+                  }
+                  </mat-nav-list>
             </mat-drawer>
             <mat-drawer-content>
                 <div style="text-align: center;min-height: 600px;">
@@ -40,27 +45,3 @@
         <router-outlet></router-outlet>
     </div>
 }
-
-<!-- 
-<div>
-    <mat-toolbar color="primary" class="mat-elevation-z8">
-        <button mat-icon-button (click)="drawer.toggle()">
-            <mat-icon>menu</mat-icon>
-        </button>
-        <span>Access Management system</span>
-    </mat-toolbar>
-    <mat-drawer-container autosize>
-        <mat-drawer #drwwer opend="true" mode="side" position="start">
-            <mat-nav-list>
-                <mat-list-item><mat-icon>home</mat-icon>Home</mat-list-item>
-            </mat-nav-list>
-        </mat-drawer>
-        <mat-drawer-content>
-            <div style="text-align: center; min-height: :600px;"> 
-                <router-outlet></router-outlet>
-            </div>
-        </mat-drawer-content>
-    </mat-drawer-container>
-
-   
-</div> -->

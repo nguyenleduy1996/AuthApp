@@ -25,7 +25,8 @@ export class LoginComponent  implements OnInit {
 
   ngOnInit(): void {
     localStorage.clear()
-    this.service._menulist.set([])
+    //this.service._menulist.set([])
+    this.service._Multimenulist.set([])
   }
 
   proceedlogin() {
@@ -42,8 +43,9 @@ export class LoginComponent  implements OnInit {
                 localStorage.setItem('username', _obj.username);
                 localStorage.setItem('userrole', this._response.userRole);
                 localStorage.setItem('refreshToken', this._response.refreshToken)
-                this.service.Loadmenubyrole(this._response.userRole).subscribe(item=>{
-                  this.service._menulist.set(item)
+                this.service.Getallmenusbyuser(_obj.username).subscribe(item=>{
+                  //this.service._menulist.set(item)
+                  this.service._Multimenulist.set(item)
                 })
                 this.router.navigateByUrl('/');
             },

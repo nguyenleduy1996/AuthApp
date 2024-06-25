@@ -120,6 +120,25 @@ namespace LearnAPI.Container
                 menupermission.Havedelete = _data.Havedelete;
             }
             return menupermission;
+       }
+        public async Task<List<MenuByUser>> GetMenuByUser(string user)
+        {
+            var listResult = new List<MenuByUser>();
+            var _data = await context.TblUserPermissions
+                        .Where(o => o.username == user)
+                        .Select(x => x.code)
+                        .Distinct()
+                        .ToListAsync();
+            foreach (var item in _data)
+            {
+                var oject = new MenuByUser();
+                oject.code = item;
+                var ListChild = await context.TblUserPermissions.Where(x => x.username == user && x.code == item && x.Status == 1).ToListAsync();
+                oject.ListChild = ListChild;
+                listResult.Add(oject);
+            } 
+
+            return listResult;
         }
     }
 }

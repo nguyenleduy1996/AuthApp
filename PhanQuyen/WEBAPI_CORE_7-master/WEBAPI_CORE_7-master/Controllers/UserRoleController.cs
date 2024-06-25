@@ -65,6 +65,16 @@ namespace LearnAPI.Controllers
             }
             return Ok(data);
         }
+        [HttpGet("GetAllMenusbyUser")]
+        public async Task<IActionResult> GetAllMenusbyUser(string userrole)
+        {
+            var data = await this.userRole.GetMenuByUser(userrole);
+            if (data == null)
+            {
+                return NotFound();
+            }
+            return Ok(data);
+        }
 
 
     }

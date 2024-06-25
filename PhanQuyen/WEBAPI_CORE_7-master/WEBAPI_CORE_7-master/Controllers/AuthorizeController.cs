@@ -85,7 +85,7 @@ namespace LearnAPI.Controllers
                     {
                         var _newtoken = new JwtSecurityToken(
                             claims:principal.Claims.ToArray(),
-                            expires:DateTime.Now.AddSeconds(15),
+                            expires:DateTime.Now.AddDays(1),
                             signingCredentials:new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(this.jwtSettings.securitykey)),
                             SecurityAlgorithms.HmacSha256)
                             );
