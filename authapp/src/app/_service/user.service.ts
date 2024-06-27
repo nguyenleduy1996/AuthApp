@@ -41,6 +41,8 @@ export class UserService {
       "refreshToken": this.GetRefreshToken(),
       "userRole": this.GetRole()
     }
+    console.log(input)
+    
     this.http.post( this.baseUrl+ "Authorize/GenerateRefreshToken", input).subscribe((Res:any)=>{
       this.SaveTokens(Res)
       this.$refreshTokenReceived.next(true);
@@ -89,15 +91,15 @@ export class UserService {
     return localStorage.getItem("userrole") || '';
   }
   //
-  GenerateRefreshToken() {
-    console.log("sss")
-    let input = {
-      "token": this.getToken(),
-      "refreshToken": this.GetRefreshToken(),
-      "userRole": localStorage.getItem("userRole") 
-    }
-    return this.http.post(this.baseUrl + 'Authorize/GenerateRefreshToken', input);
-  }
+  // GenerateRefreshToken() {
+  //   console.log("sss")
+  //   let input = {
+  //     "token": this.getToken(),
+  //     "refreshToken": this.GetRefreshToken(),
+  //     "userRole": localStorage.getItem("userRole") 
+  //   }
+  //   return this.http.post(this.baseUrl + 'Authorize/GenerateRefreshToken', input);
+  // }
 
   SaveTokens(tokendata: any) {
     console.log(tokendata)

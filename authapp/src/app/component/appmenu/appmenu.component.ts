@@ -29,6 +29,7 @@ export class AppmenuComponent implements OnInit, DoCheck {
     this.service.Getallmenusbyuser(user).subscribe(item =>{
       let filteredPermissions = item.map(permission => ({
         code: permission.code,
+        icon: permission.icon,
         listChild: permission.listChild.filter(child => child.type === "ChildMenu")
     }));
     this.Multimenulist = filteredPermissions

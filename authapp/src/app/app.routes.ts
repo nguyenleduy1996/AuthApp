@@ -23,8 +23,8 @@ export const routes: Routes = [
     {path:'resetpassword',component:ResetpasswordComponent},
     {path:'customer',component:CustomerComponent,canActivate:[authGuard]},
     {path:'customer/add',component:AddcustomerComponent,canActivate:[authGuard]},
-    {path:'customer/edit/:code',component:AddcustomerComponent,canActivate:[authGuard]},
+    {path:'user/editpermission/:user',component:AddcustomerComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
-    {path:'userrole',component:UserroleComponent,canActivate:[authGuard]}
-
+    {path:'userrole',component:UserroleComponent,canActivate:[authGuard]},
+    {path:'customer/edit/hehe/:code',component:UserroleComponent,canActivate:[authGuard]}
 ];

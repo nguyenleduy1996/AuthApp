@@ -19,13 +19,13 @@
                 <mat-nav-list>
                   @for (item of Multimenulist; track $index) {
                     <mat-list-item>
-                      <button mat-button (click)="toggleMenu(item.code)"><mat-icon>home</mat-icon>Home</button>
+                      <button mat-button (click)="toggleMenu(item.code)"><mat-icon>{{item.icon}}</mat-icon>{{item.code}}</button>
                     </mat-list-item>
                     <div [id]="item.code" style="display: block;">
                       @if(item.listChild.length > 0){
                         @for (item2 of item.listChild; track $index) {
                           <mat-list-item style="padding-left: 50px;">
-                            <button mat-button routerLink="/">{{item2.perrmission}}</button>
+                            <button mat-button [routerLink]="item2.url">{{item2.perrmission}}</button>
                           </mat-list-item>
                         }
                       }

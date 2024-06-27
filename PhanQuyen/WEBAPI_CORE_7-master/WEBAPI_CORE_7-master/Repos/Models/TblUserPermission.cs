@@ -38,4 +38,9 @@ public partial class TblUserPermission
 
     [Column("Status")]
     public int Status { get; set; }
+
+    [Column("url")]
+    public string url { get; set; }
+    [Column("icon")]
+    public string icon { get; set; } = null!;
 }

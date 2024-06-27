@@ -137,6 +137,12 @@ namespace LearnAPI.Container
                 oject.ListChild = ListChild;
                 listResult.Add(oject);
             } 
+            foreach(var item in listResult)
+            {
+                var a = item;
+                var icon = item.ListChild.OrderByDescending(x=>x.icon).FirstOrDefault(x => x.code == item.code).icon;
+                item.icon = icon;
+            }
 
             return listResult;
         }

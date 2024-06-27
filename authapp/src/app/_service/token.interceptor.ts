@@ -19,9 +19,13 @@ export const tokenInterceptor: HttpInterceptorFn = (req, next) => {
     catchError((error: HttpErrorResponse)=>{
       //debugger;
       if(error.status === 401) {
-        const isRefrsh =  confirm("Your Session is Expred. Do you want to Continue");
-        if(isRefrsh) {
-          userSrv.$refreshToken.next(true);
+        if(_token === null){
+          router.navigate(['/login']);
+        }else{
+          const isRefrsh =  confirm("Your Session is Expred. Do you want to Continue");
+          if(isRefrsh) {
+            userSrv.$refreshToken.next(true);
+          }
         }
       } 
       if(error.status === 500) {

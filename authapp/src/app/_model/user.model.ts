@@ -108,9 +108,9 @@ export interface menus {
 
 export interface menuuserpermission {
     code: string;
-    listChild:Child[];
+    icon: string;
+    listChild: Child[];
 }
-
 
 export interface Child {
     id: string;
@@ -121,6 +121,6 @@ export interface Child {
     createdTime: string;
     updatedTime: string | null;
     status: number;
+    url: string;
 }
-
 
