@@ -12,16 +12,9 @@ export const authGuard: CanActivateFn = (route, state) => {
   let menuname = ''
   if(route.url.length > 0){
     menuname = route.url.toString().replace(',','/')
-    var arrmenu = route.url.toString().split(',')
-    if(arrmenu.length == 1){
-      menuname = arrmenu[0]
-    }else{
-      arrmenu.pop(); 
-      menuname = arrmenu.join('/')
-    }
-  
-  }
 
+  }
+  console.log(menuname)
   if(localStorage.getItem('username')!= null){
     let username = localStorage.getItem('username') as string
     if(menuname != ''){

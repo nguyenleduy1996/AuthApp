@@ -11,6 +11,7 @@ import { CustomerComponent } from './component/customer/customer.component';
 import { authGuard } from './_guard/auth.guard';
 import { AddcustomerComponent } from './component/addcustomer/addcustomer.component';
 import { UserroleComponent } from './component/userrole/userrole.component';
+import { EditpermissionComponent } from './component/editpermission/editpermission.component';
 
 export const routes: Routes = [
 
@@ -23,8 +24,8 @@ export const routes: Routes = [
     {path:'resetpassword',component:ResetpasswordComponent},
     {path:'customer',component:CustomerComponent,canActivate:[authGuard]},
     {path:'customer/add',component:AddcustomerComponent,canActivate:[authGuard]},
-    {path:'user/editpermission/:user',component:AddcustomerComponent,canActivate:[authGuard]},
+    {path:'customer/edit',component:AddcustomerComponent,canActivate:[authGuard]},
     {path:'user',component:UserComponent,canActivate:[authGuard]},
     {path:'userrole',component:UserroleComponent,canActivate:[authGuard]},
-    {path:'customer/edit/hehe/:code',component:UserroleComponent,canActivate:[authGuard]}
+    {path:'user/editpermission',component:EditpermissionComponent,canActivate:[authGuard]}
 ];

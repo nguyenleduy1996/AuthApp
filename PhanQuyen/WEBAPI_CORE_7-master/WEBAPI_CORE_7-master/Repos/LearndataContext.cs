@@ -41,6 +41,7 @@ public partial class LearndataContext : DbContext
     public virtual DbSet<Customermodal> customerdetail { get; set; }
 
     public virtual DbSet<TblUserPermission> TblUserPermissions { get; set; }
+    public virtual DbSet<TblRolePermissionv2> TblRolePermissionv2s { get; set; }
 
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)

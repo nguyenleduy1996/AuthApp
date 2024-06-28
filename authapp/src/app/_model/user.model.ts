@@ -113,14 +113,10 @@ export interface menuuserpermission {
 }
 
 export interface Child {
-    id: string;
-    username: string;
-    code: string;
-    perrmission: string;
+    permission:string;
+    name: string;
     type: string;
-    createdTime: string;
-    updatedTime: string | null;
-    status: number;
     url: string;
 }
+
 

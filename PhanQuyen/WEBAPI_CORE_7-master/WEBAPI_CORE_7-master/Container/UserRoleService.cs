@@ -129,21 +129,29 @@ namespace LearnAPI.Container
                         .Select(x => x.code)
                         .Distinct()
                         .ToListAsync();
-            foreach (var item in _data)
-            {
-                var oject = new MenuByUser();
-                oject.code = item;
-                var ListChild = await context.TblUserPermissions.Where(x => x.username == user && x.code == item && x.Status == 1).ToListAsync();
-                oject.ListChild = ListChild;
-                listResult.Add(oject);
-            } 
-            foreach(var item in listResult)
-            {
-                var a = item;
-                var icon = item.ListChild.OrderByDescending(x=>x.icon).FirstOrDefault(x => x.code == item.code).icon;
-                item.icon = icon;
-            }
 
+            foreach ( var item in _data)
+            {
+                var role = await context.TblRoles.Where(x=>x.Code.Equals(item)).FirstOrDefaultAsync();
+                var MenuByUser = new MenuByUser();
+                MenuByUser.code = role.Code;
+                MenuByUser.icon = role.icon;
+                var listChild = new List<ListChild>();
+
+                var userpermissions =  await context.TblUserPermissions.Where(x=>x.username == user && x.code == item && x.status == 1).ToListAsync();
+                foreach( var a in userpermissions)
+                {
+                    var child = new ListChild();
+                    var NameNermission = await context.TblRolePermissionv2s.Where(x=>x.permission == a.permission).FirstOrDefaultAsync();
+                    child.permission = NameNermission.permission;
+                    child.name = NameNermission.name;
+                    child.type = NameNermission.type;
+                    child.url = NameNermission.url;
+                    listChild.Add(child);
+                }
+                MenuByUser.ListChild = listChild;
+                listResult.Add(MenuByUser);
+            }
             return listResult;
         }
     }

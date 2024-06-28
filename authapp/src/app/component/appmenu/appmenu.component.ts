@@ -30,7 +30,7 @@ export class AppmenuComponent implements OnInit, DoCheck {
       let filteredPermissions = item.map(permission => ({
         code: permission.code,
         icon: permission.icon,
-        listChild: permission.listChild.filter(child => child.type === "ChildMenu")
+        listChild: permission.listChild.filter(child => child.type === "MENU")
     }));
     this.Multimenulist = filteredPermissions
     })

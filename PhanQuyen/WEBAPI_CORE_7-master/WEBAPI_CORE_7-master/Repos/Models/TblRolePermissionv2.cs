@@ -6,27 +6,33 @@ using Microsoft.EntityFrameworkCore;
 
 namespace LearnAPI.Repos.Models;
 
-[Table("tbl_userpermission")]
-public partial class TblUserPermission
+[Table("tbl_rolepermissionv2")]
+public partial class TblRolePermissionv2
 {
     [Key]
-    [Column("id")]
-    [StringLength(36)]
-    public string id { get; set; }
-
-    [Column("username")]
+    [Column("permission")]
     [StringLength(50)]
-    public string username { get; set; }
+    public string permission { get; set; }
 
     [Column("code")]
     [StringLength(50)]
     public string code { get; set; }
 
-    [Column("permission")]
+
+    [Column("name")]
     [StringLength(50)]
-    public string permission { get; set; }
+    public string name { get; set; }
+
+    [Column("type")]
+    [StringLength(50)]
+    public string type { get; set; } = null!;
 
     [Column("status")]
     public int status { get; set; }
 
+    [Column("url")]
+    public string url { get; set; }
+
+    [Column("icon")]
+    public string? icon { get; set; } = null!;
 }

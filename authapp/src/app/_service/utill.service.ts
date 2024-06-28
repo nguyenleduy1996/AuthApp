@@ -18,9 +18,10 @@ export class UtillService {
   async checkPermission(user: string, code: string): Promise<boolean> {
     try {
       const items = await firstValueFrom(this.userService.Getallmenusbyuser(user));
+      console.log(code)
       for (let a of items) {
         for (let x of a.listChild) {
-          if (x.perrmission === code) {
+          if (x.permission === code) {
             return true;
           }
         }

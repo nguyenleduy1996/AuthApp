@@ -29,6 +29,11 @@ export class AddcustomerComponent implements OnInit {
   ngOnInit(): void {
 
     this.editcode = this.act.snapshot.paramMap.get('code') as string;
+    // Lấy URL hiện tại
+    const currentUrl = this.router.url.split('=')[1]
+
+    this.editcode = currentUrl
+   
     if (this.editcode != '' && this.editcode != null) {
       this.isedit = true
       this.title = 'Edit Customer';

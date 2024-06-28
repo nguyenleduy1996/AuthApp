@@ -95,9 +95,11 @@ export class UserComponent implements OnInit {
   }
 
   async functionedit(user: string, code: string) {
-    var a = await this.utillServive.checkPermission(user, code)
+    let u = localStorage.getItem('username') as string;
+    var a = await this.utillServive.checkPermission(u, code)
     if(a== true){
-      this.router.navigateByUrl('/user/editpermission/' + code)
+      this.router.navigate(['/user/editpermission'],  { queryParams: { Username  : user
+      } });
     }else{
       this.toastr.warning('User not having edit access', 'warning')
     }

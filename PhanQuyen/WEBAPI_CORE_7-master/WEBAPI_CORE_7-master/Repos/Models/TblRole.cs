@@ -20,4 +20,8 @@ public partial class TblRole
 
     [Column("status")]
     public bool? Status { get; set; }
+
+    [Column("icon")]
+    [StringLength(50)]
+    public string? icon { get; set; } = null!;
 }
